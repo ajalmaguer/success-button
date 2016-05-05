@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div id="player"></div>
+        </div>
+        <div class="col-md-12 text-center">
+          <div>
+            <button class="btn btn-primary btn-lg" id="seek">Party Time!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+        tag.src = "http://www.youtube.com/player_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        var player;
+        function onYouTubePlayerAPIReady() {
+            player = new YT.Player('player', {
+                height: '390',
+                width: '640',
+                videoId: 'YM4utkS_iSw'
+            });
+        }
+        $(window).load(function(){
+            $('#seek').click(function(){
+                player.seekTo(24).playVideo()//parseFloat($("#seekto").val()));
+                return false;
+            });
+        });
+    </script>
+  </body>
+</html>
