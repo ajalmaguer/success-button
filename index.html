@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
   <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+  <style type="text/css" media="screen">
+    .audio {
+      display: hidden;
+    }
+  </style>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
   <link rel="apple-touch-icon" href="sonidito.png">
   <link rel="apple-touch-icon" sizes="120x120" href="sonidito-retina.png">
@@ -9,38 +17,48 @@
   <body>
 
     <div class="container">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
       <div class="row">
-        <div class="col-md-12 text-center">
-          <div id="player"></div>
-        </div>
-        <div class="col-md-12 text-center">
-          <div>
-            <button class="btn btn-primary btn-lg" id="seek">Party Time!</button>
-          </div>
-        </div>
+        <div class="col-xs-12 text-center">
+
+
+            <button class="btn btn-primary btn-lg" id="play">Party Time!</button>
+
+            <audio class="audio">
+               <source src="sonidito-edited.mp3" type="audio/mpeg">
+            </audio>
+
+
       </div>
     </div>
 
     <script>
-      // 2. This code loads the IFrame Player API code asynchronously.
-        var tag = document.createElement('script');
-        tag.src = "http://www.youtube.com/player_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        var player;
-        function onYouTubePlayerAPIReady() {
-            player = new YT.Player('player', {
-                height: '390',
-                width: '640',
-                videoId: 'YM4utkS_iSw'
-            });
-        }
-        $(window).load(function(){
-            $('#seek').click(function(){
-                player.seekTo(24).playVideo()//parseFloat($("#seekto").val()));
-                return false;
-            });
-        });
+      var playing = false
+      var a = document.getElementsByTagName("audio")[0];
+
+      $('document').ready(function () {
+          $('#play').click(function () {
+
+              if (playing){
+                a.pause()
+                a.load()
+                playing = false
+                $('#play').html("Party Time!")
+
+              } else {
+                $('#play').html("Enough!")
+                playing = true
+                a.play()
+              }
+
+          });
+      });
     </script>
   </body>
 </html>
