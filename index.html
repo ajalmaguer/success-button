@@ -34,6 +34,12 @@
                <source src="sonidito-edited.mp3" type="audio/mpeg">
             </audio>
 
+            <br>
+            <br>
+            <br>
+
+            <img id="gif" src="flossing.gif" alt="flossing" style="display: none;">
+
 
       </div>
     </div>
@@ -50,9 +56,11 @@
                 a.load()
                 playing = false
                 $('#play').html("Party Time!")
+                $('#gif').hide()
 
               } else {
                 $('#play').html("Enough!")
+                $('#gif').show()
                 playing = true
                 a.play()
               }
